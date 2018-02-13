@@ -19,6 +19,8 @@ class CreateHvacsTable extends Migration
             $table->integer('flow');
             $table->boolean('finished')->default(true);
             $table->timestamps();
+
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });
     }
 

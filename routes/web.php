@@ -11,21 +11,30 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->get('/', function (){
+
+    // $room = App\Room::find(1);
+
+    
+    $hvac = App\Room::find(1)->hvac;
+    
+    // $hvac->update(['flow' => 10, 'finished' => true]);
+    
+    // return str_plural('room_ac');
+    return $hvac;
 });
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-  $router->get('rooms',  ['uses' => 'RoomController@index']);
+    $router->get('rooms',  ['uses' => 'RoomController@index']);
 
-  $router->get('rooms/{id}', ['uses' => 'RoomController@show']);
+    $router->get('rooms/{id}', ['uses' => 'RoomController@show']);
 
-  $router->post('rooms', ['uses' => 'RoomController@create']);
+    $router->post('rooms', ['uses' => 'RoomController@create']);
 
-  $router->put('rooms/{id}', ['uses' => 'RoomController@update']);
-  
-  $router->delete('rooms/{id}', ['uses' => 'RoomController@delete']);
+    $router->put('rooms/{id}', ['uses' => 'RoomController@update']);
+
+    $router->delete('rooms/{id}', ['uses' => 'RoomController@delete']);
 
 });

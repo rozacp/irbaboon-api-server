@@ -15,8 +15,18 @@ class DatabaseSeeder extends Seeder
         $this->call('FanCodesTableSeeder');
         $this->call('ModeCodesTableSeeder');
         $this->call('PowerCodesTableSeeder');
-        $this->call('RoomsTableSeeder');
         $this->call('TempCodesTableSeeder');
         $this->call('VaneCodesTableSeeder');
+
+        factory(App\User::class)->create();
+
+        factory(App\Room::class, 17)->create()->each(function($room, $i) {
+
+            $room->number = $i + 1;
+            $room->save();
+
+            $room->hvac()->save(factory(App\Hvac::class)->make());
+            $room->room_ac()->save(factory(App\RoomAc::class)->make());
+        });
     }
 }

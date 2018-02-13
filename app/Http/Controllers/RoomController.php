@@ -21,7 +21,7 @@ class RoomController extends Controller
      */
     public function Index()
     {
-        $rooms = Room::all();
+        $rooms = Room::with('hvac')->with('room_ac')->get();
         
         return response()->json($rooms);
     }

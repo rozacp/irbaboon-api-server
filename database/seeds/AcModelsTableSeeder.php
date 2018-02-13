@@ -14,5 +14,7 @@ class AcModelsTableSeeder extends Seeder
         $model = App\AcModel::class;
 
         $model::create(['model' => 'mitsubishi']);
+        $model::create(['model' => 'panasonic']);
+        $model::create(['model' => 'lg']);
     }
 }

@@ -22,6 +22,8 @@ class CreateRoomsTable extends Migration
             $table->integer('ac_model_id')->unsigned();
             $table->boolean('status')->default(false);
             $table->timestamps();
+
+            $table->foreign('ac_model_id')->references('id')->on('ac_models');
         });
     }
 

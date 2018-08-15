@@ -27,14 +27,19 @@ $router->get('/', function (){
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
+    // Rooms routes
     $router->get('rooms',  ['uses' => 'RoomController@index']);
-
     $router->get('rooms/{id}', ['uses' => 'RoomController@show']);
-
     $router->post('rooms', ['uses' => 'RoomController@create']);
-
     $router->put('rooms/{id}', ['uses' => 'RoomController@update']);
-
     $router->delete('rooms/{id}', ['uses' => 'RoomController@delete']);
+
+    // Ac Models routes
+    $router->get('acmodels',  ['uses' => 'AcModelController@index']);
+    $router->get('acmodels/{id}', ['uses' => 'AcModelController@show']);
+    $router->post('acmodels', ['uses' => 'AcModelController@create']);
+    $router->put('acmodels/{id}', ['uses' => 'AcModelController@update']);
+    $router->delete('acmodels/{id}', ['uses' => 'AcModelController@delete']);
+
 
 });
